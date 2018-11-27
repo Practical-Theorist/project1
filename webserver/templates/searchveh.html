@@ -1,0 +1,31 @@
+<html>
+  <style>
+    body{
+      font-size: 15pt;
+      font-family: arial;
+    }
+  </style>
+
+
+<body>
+  <h1>The vehicle type list</h1>
+
+  <div>
+    {% for n in data %}
+    <div>{{n}}</div>
+    {% endfor %}
+  </div>
+
+<form method="POST" action="/results">
+
+<p>Input the vehicle type you want to search: <input type="text" name="type_code"> <input type="submit" value="Search">
+to get the collision quantity caused by it.</p>
+</form>
+
+<p><a href="/search">Go to the search page</a></p>
+<p><a href="/">Go to the home page</a></p>
+
+</body>
+
+
+</html>

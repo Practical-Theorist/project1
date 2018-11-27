@@ -1,6 +1,6 @@
 <html>
   <style>
-    body{ 
+    body{
       font-size: 15pt;
       font-family: arial;
     }
@@ -8,20 +8,16 @@
 
 
 <body>
-  <h1>Some famous streets</h1>
+  <h1>The corresponding results are:</h1>
 
   <div>
-    {% for n in data %}
+    {% for n in context['data'] %}
     <div>{{n}}</div>
     {% endfor %}
   </div>
 
 <p><a href="/search">Go to the search page</a></p>
-
-<form method="POST" action="/add">
-
-<p>Name of new street: <input type="text" name="name"> <input type="submit" value="Add"></p>
-</form>
+<p><a href="/">Go to the home page</a></p>
 
 </body>
 
