@@ -1,0 +1,76 @@
+<html>
+ <head> <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+</style>
+
+ </head>
+
+<body class="w3-light-grey">
+
+	<div class="w3-content">
+	<header>
+		<style type="text/css"> 
+<!-- 
+A { text-decoration: none} 
+--> 
+</style></header>
+<h1>street page</h1>
+<h2>the score for this street is {{data_3}}</h2>
+<h2>street comment</h2>
+<div class="w3-container">
+    {% for n in data %}
+    <p>comment:{{n[0]}} user:{{n[1]}} date:{{n[2]}}</p>
+    
+    {% endfor %}
+</div>
+<h2>add comment</h2>
+<form class="w3-container" method="POST" action="/comment" id="comment">
+<label>your comment: </label>
+	<input type= "hidden" name = "street_name" value= "{{data1}}">
+	<input type= "hidden" name = "borough" value= {{data2}}>
+	<div class="w3-section">
+	<textarea class="w3-input w3-border w3-hover-border-black" style="width:100%;" name="comment" form="comment">Enter text here...</textarea> 
+	</div>
+	<input type="submit" class="w3-button w3-block w3-black" value="make">
+</form>
+
+<h2>evaluate the street</h2>
+<form class="w3-container" method="POST" action="/evaluate">
+<p>your score: 
+	<input type= "hidden" name = "street_name" value= "{{data1}}">
+	<input type= "hidden" name = "borough" value= {{data2}}>
+	<input type="number" name="score" min="1" max="5" required="required">
+	<input type="submit" value="evaluate"></p>
+</form>
+
+<h2>report the collision</h2>
+<form class="w3-container" method="POST" action="/report">
+<p>collision info: 
+	<input type= "hidden" name = "street_name" value= "{{data1}}">
+	<input type= "hidden" name = "borough" value= {{data2}}>
+	<input type="time" name="time" placeholder="time" required="required">
+	<input type="date" name="date" placeholder="date" min = "1940-01-01" max="2018-11-28" required="required">
+	<input type="number" name="casualty" placeholder="casualty" min="0" max="1000" required="required"> 
+	<input type="submit" value="report"></p>
+</form>
+
+<div>
+    {% if check_op %}
+	opreation successful!
+    {% endif %}
+</div>
+
+<h1><a href="{{ url_for("home") }}">go to home page</a></h1>
+
+<h1><a href="{{ url_for("street") }}">go to main street page</a></h1>
+</div>
+</body>
+
+
+</html>
+

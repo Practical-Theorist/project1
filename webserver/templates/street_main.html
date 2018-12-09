@@ -1,0 +1,63 @@
+<html>
+ <head> <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+</style>
+
+ </head>
+
+<body class="w3-light-grey">
+
+	<div class="w3-content">
+	<header>
+		<style type="text/css"> 
+<!-- 
+A { text-decoration: none} 
+--> 
+</style></header>
+<h1>street search</h1>
+<div class="w3-container">
+<form method="POST" action="/street/streetsearch">
+<p>info of street:
+	<input type="text" name="street_name" placeholder="street_name" required="required">
+	<input type="text" name="borough" placeholder="borough" required="required">
+	<input type="submit" value="search"></p>
+</form>
+</div>
+<h2>report collision here or you can go to specific street page below</h2>
+<p>if it is successful you will be redirected to home page</p>
+<p>if the input is invalid, you will stay at this page</p>
+<div class="w3-container">
+<form method="POST" action="/street/reportnew">
+<p>info of collision:
+	<input input onkeyup="value=value.replace(/[^\s0-9\a-\z\A-\Z]/g,'')" type="text" name="street_name" placeholder="street_name" required="required">
+	<input input onkeyup="value=value.replace(/[^\s0-9\a-\z\A-\Z]/g,'')"
+	type="text" name="borough" placeholder="borough" required="required">
+	<input type="number" name="zipcode" placeholder="zipcode" min = "00000" max = "99999" minlength = "5" maxlength = "5" required="required">
+	<input type="time" name="time" placeholder="time">
+	<input type="date" name="date" placeholder="date" min = "1940-01-01" max="2018-11-28">
+	<input type="number" name="casualty" min="0" placeholder="casualty" max="1000" required="required">
+	<input type="submit" value="report"></p>
+</form>
+</div>
+<h1>street list</h1>
+<div class="w3-container">
+    {% for n in data %}
+    <p><a href="/street/{{n[0]}}/{{n[1]}}">name:{{n[0]}}, borough:{{n[1]}}</a></p>
+    
+    {% endfor %}
+</div>
+<h1><a href="{{ url_for("home") }}">go to home page</a></h1>
+</div>
+</body>
+
+
+</html>
+
+
+
+
